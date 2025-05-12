@@ -1,38 +1,106 @@
+/* General */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   margin: 0;
   padding: 0;
-  background: #f8f9fa;
+  background: #f9f9f9;
   color: #333;
 }
 
+a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Header */
 header {
-  background: #282c34;
+  background: #1e1e2f;
   color: white;
-  padding: 2rem;
+  padding: 2rem 1rem;
   text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+header p {
+  font-size: 1.1rem;
+  margin: 0.5rem 0 1rem;
+}
+
+/* Navigation */
+nav {
+  margin-top: 1rem;
 }
 
 nav a {
   margin: 0 1rem;
   color: #61dafb;
-  text-decoration: none;
 }
 
+/* Main Layout */
 main {
   padding: 2rem;
-  max-width: 800px;
+  max-width: 1000px;
   margin: auto;
 }
 
 section {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
+h2 {
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 0.3rem;
+  margin-top: 2rem;
+}
+
+h3 {
+  margin-top: 1.5rem;
+  color: #1a1a1a;
+}
+
+/* Images & Embeds */
+img {
+  max-width: 100%;
+  height: auto;
+  margin: 0.5rem 0;
+  border-radius: 5px;
+}
+
+embed {
+  border: 1px solid #ccc;
+  margin: 1rem 0;
+  border-radius: 6px;
+}
+
+/* Footer */
 footer {
   text-align: center;
   padding: 1rem;
-  background: #e9ecef;
-  color: #555;
+  background: #eee;
+  color: #666;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  nav a {
+    display: block;
+    margin: 0.5rem 0;
+  }
+
+  img {
+    width: 100% !important;
+  }
 }
