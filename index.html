@@ -18,9 +18,20 @@
       color: white;
       text-align: center;
     }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .intro-left h1 {
+      margin-top: 0;
+    }
     .logos {
       text-align: center;
-      margin-top: 1rem;
+      margin: 1rem 0;
     }
     .logos img {
       height: 80px;
@@ -29,10 +40,19 @@
     }
     .resume-img {
       width: 100%;
-      max-width: 700px;
+      max-width: 600px;
       margin: 1rem 0;
       border: 1px solid #ccc;
       border-radius: 8px;
+    }
+    .button-link {
+      display: inline-block;
+      background-color: #0066cc;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+      margin: 1rem 0;
     }
     .contact-icons img {
       width: 24px;
@@ -43,7 +63,6 @@
 </head>
 <body>
   <div class="banner">
-    <h1>Luca Rijneveld</h1>
     <div class="logos">
       <img src="images/esa-logo.png" alt="ESA" />
       <img src="images/efteling-logo.png" alt="Efteling" />
@@ -53,34 +72,21 @@
   </div>
 
   <main>
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        I'm a Bachelor's student in Applied Data Science and Artificial Intelligence at Breda University of Applied Sciences.
-        My work bridges AI, LLMs, and video game analysis, with hands-on experience at organizations like the European Space Agency
-        and Breda Guardians. I value inclusive, impactful research and aim to bring cutting-edge machine learning into the gaming industry.
-      </p>
-    </section>
-
-    <section id="resume">
-      <h2>Resume</h2>
-      <img src="images/resume-image.png" alt="Luca Rijneveld Resume" class="resume-img" />
-      <p><a href="docs/resume.pdf" download>📄 Download Resume (PDF)</a></p>
-    </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <ul class="contact-icons">
-        <li><img src="images/mail-icon.png" alt="Email"> <a href="mailto:lucarijneveld@gmail.com">lucarijneveld@gmail.com</a></li>
-        <li><img src="images/linkedin-icon.png" alt="LinkedIn"> <a href="https://www.linkedin.com/in/luca-rijneveld-213204194/" target="_blank">linkedin.com/in/luca-rijneveld</a></li>
-        <li><img src="images/github-icon.png" alt="GitHub"> <a href="https://github.com/LucaRijneveld" target="_blank">github.com/LucaRijneveld</a></li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Projects</h2>
-      <p>➡️ Visit the <a href="visual-portfolio.html">Visual Portfolio</a> for project visuals & timelines</p>
-    </section>
+    <div class="intro-grid">
+      <div class="intro-left">
+        <h1>Luca Rijneveld</h1>
+        <ul class="contact-icons">
+          <li><img src="images/mail-icon.png" alt="Email"> <a href="mailto:lucarijneveld@gmail.com">lucarijneveld@gmail.com</a></li>
+          <li><img src="images/linkedin-icon.png" alt="LinkedIn"> <a href="https://www.linkedin.com/in/luca-rijneveld-213204194/" target="_blank">linkedin.com/in/luca-rijneveld</a></li>
+          <li><img src="images/github-icon.png" alt="GitHub"> <a href="https://github.com/LucaRijneveld" target="_blank">github.com/LucaRijneveld</a></li>
+        </ul>
+        <a href="visual-portfolio.html" class="button-link">📂 View Portfolio</a><br>
+        <a href="docs/resume.pdf" class="button-link" download>📄 Download Resume</a>
+      </div>
+      <div class="intro-right">
+        <img src="images/resume-image.png" alt="Luca Rijneveld Resume" class="resume-img" />
+      </div>
+    </div>
   </main>
 
   <footer>
