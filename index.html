@@ -12,11 +12,24 @@
       background-position: center;
       height: 300px;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       color: white;
       text-align: center;
+    }
+    .logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      background-color: white;
+      padding: 1rem;
+      gap: 2rem;
+    }
+    .logos img {
+      height: 100px;
+      max-width: 150px;
+      object-fit: contain;
     }
     .intro-grid {
       display: grid;
@@ -29,18 +42,9 @@
     .intro-left h1 {
       margin-top: 0;
     }
-    .logos {
-      text-align: center;
-      margin: 1rem 0;
-    }
-    .logos img {
-      height: 80px;
-      margin: 15px;
-      vertical-align: middle;
-    }
     .resume-img {
       width: 100%;
-      max-width: 600px;
+      max-width: 700px;
       margin: 1rem 0;
       border: 1px solid #ccc;
       border-radius: 8px;
@@ -49,32 +53,38 @@
       display: inline-block;
       background-color: #0066cc;
       color: white;
-      padding: 0.75rem 1.5rem;
+      padding: 0.75rem 2rem;
       border-radius: 5px;
       text-decoration: none;
       margin: 1rem 0;
+      font-size: 1rem;
     }
     .contact-icons img {
       width: 24px;
       margin-right: 8px;
       vertical-align: middle;
     }
+    .contact-icons li {
+      margin-bottom: 0.5rem;
+    }
   </style>
 </head>
 <body>
   <div class="banner">
-    <div class="logos">
-      <img src="images/esa-logo.png" alt="ESA" />
-      <img src="images/efteling-logo.png" alt="Efteling" />
-      <img src="images/breda-logo.png" alt="Breda University" />
-      <img src="images/breda-guardians-logo.png" alt="Breda Guardians" />
-    </div>
+    <h1>Luca Rijneveld</h1>
+  </div>
+
+  <div class="logos">
+    <img src="images/esa-logo.png" alt="ESA" />
+    <img src="images/efteling-logo.png" alt="Efteling" />
+    <img src="images/buas-logo.png" alt="BUas" />
+    <img src="images/breda-logo.png" alt="Breda University" />
+    <img src="images/breda-guardians-logo.png" alt="Breda Guardians" />
   </div>
 
   <main>
     <div class="intro-grid">
       <div class="intro-left">
-        <h1>Luca Rijneveld</h1>
         <ul class="contact-icons">
           <li><img src="images/mail-icon.png" alt="Email"> <a href="mailto:lucarijneveld@gmail.com">lucarijneveld@gmail.com</a></li>
           <li><img src="images/linkedin-icon.png" alt="LinkedIn"> <a href="https://www.linkedin.com/in/luca-rijneveld-213204194/" target="_blank">linkedin.com/in/luca-rijneveld</a></li>
