@@ -109,36 +109,43 @@
         <input type="text" name="q6" />
         <label><input type="checkbox" name="declined" /> I prefer not to say</label>
 
-        <button class="button" type="submit">Submit</button>
+        <div style="text-align: center;">
+            <button type="submit" class="button-link submit-button">📩 Submit</button>
+        </div>
     </form>
   </div>
 
   <div id="result"></div>
 
-  <script>
-    document.getElementById("surveyForm").addEventListener("submit", async function (e) {
-      e.preventDefault();
+    <script>
+    function getCheckedValues(name) {
+        return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`))
+                    .map(cb => parseInt(cb.value));
+    }
 
-      const form = e.target;
-      const data = {
-        q1: parseInt(form.q1.value),
-        q2: parseInt(form.q2.value),
-        q3: parseInt(form.q3.value),
-        q4: parseInt(form.q4.value),
-        q5: parseInt(form.q5.value),
+    document.getElementById("surveyForm").addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const form = e.target;
+        const data = {
+        q1: getCheckedValues("q1"),
+        q2: getCheckedValues("q2"),
+        q3: getCheckedValues("q3"),
+        q4: getCheckedValues("q4"),
+        q5: getCheckedValues("q5"),
         q6: form.q6.value || null,
         declined: form.declined.checked
-      };
+        };
 
-      const response = await fetch("http://localhost:8000/submit", {
+        const response = await fetch("http://localhost:8000/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
-      });
+        });
 
-      const result = await response.json();
-      document.getElementById("result").textContent = `Submitted! Your user ID is ${result.user_id}`;
+        const result = await response.json();
+        document.getElementById("result").textContent = `Submitted! Your user ID is ${result.user_id}`;
     });
-  </script>
+    </script>
 </body>
 </html>

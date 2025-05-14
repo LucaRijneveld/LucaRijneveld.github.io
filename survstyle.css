@@ -74,12 +74,24 @@ form {
     list-style: none;
   }
 
-  .submit-button {
-    margin-top: 2rem;
-    background-color: #0066cc;
-    color: white;
-    border: none;
-    padding: 0.75rem 2rem;
-    border-radius: 6px;
-    cursor: pointer;
-  }
+.button-link {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.submit-button {
+  background-color: #0066cc;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #0055aa;
+}
+

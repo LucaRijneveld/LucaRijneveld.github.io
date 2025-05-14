@@ -104,6 +104,14 @@ footer {
   background-color: #e68900;
 }
 
+.survey-cta {
+  background-color: rgba(128, 128, 128, 0.25); /* grey with 25% opacity */
+  color: black;
+  border: 2px solid #666;
+  font-style: italic;
+  text-align: center;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   header h1 {
