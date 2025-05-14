@@ -89,6 +89,21 @@ footer {
   color: #666;
 }
 
+.button-link.special {
+  font-size: 1.1rem;
+  padding: 1rem 2rem;
+  background-color: #ff9800; /* orange for visibility, change if needed */
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.button-link.special:hover {
+  background-color: #e68900;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   header h1 {

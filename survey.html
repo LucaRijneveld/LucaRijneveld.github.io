@@ -2,26 +2,96 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Survey</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luca Rijneveld | AI & Game Researcher</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    label { display: block; margin-top: 1rem; }
-    input, select { width: 300px; }
-    .button { margin-top: 1rem; }
+    .banner {
+      background-image: url('images/a4ffb836-d6a2-440f-a229-e1e72ac6e4a1.png');
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+    .logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      background-color: white;
+      padding: 1rem;
+      gap: 2rem;
+    }
+    .logos img {
+      height: 100px;
+      max-width: 150px;
+      object-fit: contain;
+    }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .intro-left h1 {
+      margin-top: 0;
+    }
+    .resume-img {
+      width: 100%;
+      max-width: 700px;
+      margin: 1rem 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .button-link {
+      display: inline-block;
+      background-color: #0066cc;
+      color: white;
+      padding: 0.75rem 2rem;
+      border-radius: 5px;
+      text-decoration: none;
+      margin: 1rem 0;
+      font-size: 1rem;
+    }
+    .contact-icons img {
+      width: 24px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    .contact-icons li {
+      margin-bottom: 0.5rem;
+    }
   </style>
 </head>
 <body>
-  <h1>Quick Survey</h1>
+  <div class="banner">
+    <h1></h1>
+  </div>
+
+  <div class="logos">
+    <img src="images/esa-logo.png" alt="ESA" />
+    <img src="images/efteling-logo.png" alt="Efteling" />
+    <img src="images/buas-logo.png" alt="BUas" />
+    <img src="images/breda-logo.png" alt="Breda University" />
+    <img src="images/breda-guardians-logo.png" alt="Breda Guardians" />
+  </div>
 
   <form id="surveyForm">
     <!-- Q1 -->
     <label>How did you find my portfolio?</label>
     <select name="q1">
-      <option value="1">LinkedIn</option>
-      <option value="2">GitHub</option>
-      <option value="3">Google</option>
-      <option value="4">University</option>
-      <option value="5">Friend</option>
-      <option value="6">Other</option>
+        <input type="checkbox" name="q1" value="1" /> LinkedIn<br/>
+        <input type="checkbox" name="q1" value="2" /> GitHub<br/>
+        <input type="checkbox" name="q1" value="3" /> Google<br/>
+        <input type="checkbox" name="q1" value="4" /> University<br/>
+        <input type="checkbox" name="q1" value="5" /> Friend<br/>
+        <input type="checkbox" name="q1" value="6" /> Other<br/>
     </select>
 
     <!-- Q2 -->
