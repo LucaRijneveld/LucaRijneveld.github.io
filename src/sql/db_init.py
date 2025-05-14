@@ -1,8 +1,5 @@
 from sqlalchemy import create_engine
-from sqlalchemy_utils import database_exists, create_database
+from tables import Base
 
-engine = create_engine("postgresql://localhost/mydb")
-if not database_exists(engine.url):
-    create_database(engine.url)
-
-print(database_exists(engine.url))
+engine = create_engine("sqlite:///src/sql/portfolio.db")
+Base.metadata.create_all(engine)
