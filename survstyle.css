@@ -1,8 +1,23 @@
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background-color: #f5f5f5;
-  }
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.survey-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 600px;
+}
 
   .banner {
     background-image: url('images/banner.png');
@@ -54,7 +69,9 @@
   }
 
   .checkbox-group {
-    margin-top: 0.5rem;
+    margin-top: 0;
+    padding: 0;
+    list-style: none;
   }
 
   .submit-button {
