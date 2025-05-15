@@ -124,20 +124,6 @@ class Q6(Base):
     declined: Mapped[bool] = mapped_column(types.Boolean, default=False)
 
 
-class Q7(Base):
-    __tablename__ = "q7"
-    id: Mapped[UUID] = mapped_column(
-        types.Uuid, primary_key=True, default=uuid4
-    )
-    user_id: Mapped[UUID] = mapped_column(
-        types.Uuid, ForeignKey("user_id.id"), nullable=False
-    )
-    question: Mapped[Optional[str]] = mapped_column(
-        types.String(1677219), nullable=True
-    )
-    declined: Mapped[bool] = mapped_column(types.Boolean, default=False)
-
-
 """
 Here are the tables for the answers. These tables map to the int in the previous tables. Only Q1-Q5 have answers. Q6 is stored as a string.
 """
