@@ -1,5 +1,6 @@
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import Optional
+from typing import List
 
 
 class SurveyInput(BaseModel):
@@ -8,5 +9,5 @@ class SurveyInput(BaseModel):
     q3: List[int]
     q4: List[int]
     q5: List[int]
-    q6: Optional[str]
-    declined: bool
+    q6: Optional[str] = None
+    declined: bool = False

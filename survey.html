@@ -130,6 +130,8 @@
         declined: form.declined.checked
       };
 
+      console.log("Sending JSON:", JSON.stringify(data));
+
       const response = await fetch("http://localhost:8000/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
