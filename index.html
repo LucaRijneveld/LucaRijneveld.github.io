@@ -3,110 +3,161 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Luca Rijneveld | AI & Game Researcher</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Luca Rijneveld | AI & Game Research</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
-    .banner {
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    html, body {
+      scroll-behavior: smooth;
+      background-color: #fff;
+      color: #111;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header {
       background-image: url('images/a4ffb836-d6a2-440f-a229-e1e72ac6e4a1.png');
       background-size: cover;
       background-position: center;
-      height: 300px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      height: 100vh;
       color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
     }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      font-weight: 300;
+    }
+
+    .cta-button {
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      background-color: rgba(255, 255, 255, 0.25);
+      color: white;
+      border: 2px solid white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background-color: white;
+      color: black;
+    }
+
     .logos {
       display: flex;
       justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      background-color: white;
-      padding: 1rem;
       gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
     }
+
     .logos img {
-      height: 100px;
-      max-width: 150px;
+      height: 80px;
       object-fit: contain;
     }
-    .intro-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      max-width: 1100px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
     }
-    .intro-left h1 {
-      margin-top: 0;
+
+    .section-subtitle {
+      max-width: 600px;
+      font-size: 1.1rem;
+      font-weight: 300;
     }
-    .resume-img {
-      width: 100%;
-      max-width: 700px;
-      margin: 1rem 0;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
+
     .button-link {
-      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.75rem 2rem;
       background-color: #0066cc;
       color: white;
-      padding: 0.75rem 2rem;
-      border-radius: 5px;
+      border: none;
+      border-radius: 6px;
       text-decoration: none;
-      margin: 1rem 0;
-      font-size: 1rem;
+      font-weight: 500;
     }
-    .contact-icons img {
-      width: 24px;
-      margin-right: 8px;
-      vertical-align: middle;
-    }
-    .contact-icons li {
-      margin-bottom: 0.5rem;
+
+    footer {
+      padding: 2rem;
+      text-align: center;
+      background-color: #f0f0f0;
+      color: #777;
     }
   </style>
 </head>
 <body>
-  <div class="banner">
-    <h1></h1>
-  </div>
-
-  <div class="logos">
-    <img src="images/esa-logo.png" alt="ESA" />
-    <img src="images/efteling-logo.png" alt="Efteling" />
-    <img src="images/buas-logo.png" alt="BUas" />
-    <img src="images/breda-logo.png" alt="Breda University" />
-    <img src="images/breda-guardians-logo.png" alt="Breda Guardians" />
-  </div>
-
-  <div style="text-align: center; margin: 1rem 0;">
-    <a href="survey.html" class="button-link survey-cta">
-      How did you find me?<br><em>click me now</em>
-    </a>
-  </div>
-
-  <main>
-    <div class="intro-grid">
-      <div class="intro-left">
-        <ul class="contact-icons">
-          <li><img src="images/mail-icon.png" alt="Email"> <a href="mailto:lucarijneveld@gmail.com">lucarijneveld@gmail.com</a></li>
-          <li><img src="images/linkedin-icon.png" alt="LinkedIn"> <a href="https://www.linkedin.com/in/luca-rijneveld-213204194/" target="_blank">linkedin.com/in/luca-rijneveld</a></li>
-          <li><img src="images/github-icon.png" alt="GitHub"> <a href="https://github.com/LucaRijneveld" target="_blank">github.com/LucaRijneveld</a></li>
-        </ul>
-        <a href="visual-portfolio.html" class="button-link">📂 View Portfolio</a><br>
-        <a href="docs/resume.pdf" class="button-link" download>📄 Download Resume</a>
-      </div>
-      <div class="intro-right">
-        <img src="images/resume-image.png" alt="Luca Rijneveld Resume" class="resume-img" />
-      </div>
+  <header>
+    <h1>Luca Rijneveld</h1>
+    <p>AI & Game Researcher | Data Science & LLMs</p>
+    <a href="#about" class="cta-button">Explore my work</a>
+    <div class="logos">
+      <img src="images/esa-logo.png" alt="ESA">
+      <img src="images/efteling-logo.png" alt="Efteling">
+      <img src="images/breda-logo.png" alt="Breda University">
+      <img src="images/breda-guardians-logo.png" alt="Breda Guardians">
     </div>
-  </main>
+  </header>
+
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <p class="section-subtitle">
+      I’m a passionate AI researcher with a focus on games, explainable models, and interactive tools. I love building data-driven systems and applying research in creative ways.
+    </p>
+    <a href="docs/resume.pdf" class="button-link" download>📄 Download Resume</a>
+  </section>
+
+  <section id="portfolio">
+    <h2 class="section-title">Portfolio</h2>
+    <p class="section-subtitle">Explore a collection of my favorite projects — from robotics to AI explainability.</p>
+    <a href="visual-portfolio.html" class="button-link">📂 View Projects</a>
+  </section>
+
+  <section id="survey">
+    <h2 class="section-title">Survey</h2>
+    <p class="section-subtitle">Let me know how you found my site and what you're looking for.</p>
+    <a href="survey.html" class="button-link" style="background-color: #ccc; color: black;">📝 Start Survey</a>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <ul style="list-style: none; padding: 0; font-size: 1rem;">
+      <li><strong>Email:</strong> <a href="mailto:lucarijneveld@gmail.com">lucarijneveld@gmail.com</a></li>
+      <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/luca-rijneveld-213204194/" target="_blank">linkedin.com/in/luca-rijneveld</a></li>
+      <li><strong>GitHub:</strong> <a href="https://github.com/LucaRijneveld" target="_blank">github.com/LucaRijneveld</a></li>
+    </ul>
+  </section>
 
   <footer>
-    <p>&copy; 2025 Luca Rijneveld</p>
+    &copy; 2025 Luca Rijneveld — Built with ❤️ and AI
   </footer>
 </body>
 </html>
