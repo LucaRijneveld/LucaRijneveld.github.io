@@ -135,7 +135,9 @@
         q5: getCheckedValues("q5"),
         q6: form.q6.value || null,
         declined: form.declined.checked
-        };
+      };
+
+      console.log("Sending JSON:", JSON.stringify(data));
 
         const response = await fetch("http://localhost:8000/submit", {
         method: "POST",
