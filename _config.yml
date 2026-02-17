@@ -1,0 +1,10 @@
+# Configuration for GitHub Pages
+title: My Portfolio
+description: Welcome to my portfolio website
+author: Your Name
+
+# Build settings
+theme: jekyll-theme-cayman
+remote_theme: pages-themes/cayman@v0.2.0
+plugins:
+  - jekyll-remote-theme
