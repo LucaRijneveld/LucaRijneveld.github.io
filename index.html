@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luca Rijneveld — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #F7F6F2; --surface: #FFFFFF; --border: #E4E2DA;
+      --text: #1A1916; --muted: #7A7870; --accent: #2563EB;
+      --accent-light: #EEF3FD; --accent2: #0F9473; --tag-bg: #EDECE8; --nav-h: 64px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.6; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; height:var(--nav-h); background:rgba(247,246,242,0.92); backdrop-filter:blur(14px); border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; padding:0 48px; }
+    .nav-logo { font-family:'DM Serif Display',serif; font-size:1.1rem; color:var(--text); text-decoration:none; }
+    .nav-links { display:flex; gap:28px; list-style:none; }
+    .nav-links a { text-decoration:none; color:var(--muted); font-size:0.875rem; font-weight:500; transition:color 0.2s; }
+    .nav-links a:hover { color:var(--text); }
+    main { padding-top:var(--nav-h); }
+    section { padding:80px 48px; max-width:1100px; margin:0 auto; }
+    .section-label { font-size:0.72rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); margin-bottom:10px; }
+    h1 { font-family:'DM Serif Display',serif; font-size:clamp(2.6rem,5vw,4rem); line-height:1.08; letter-spacing:-0.025em; }
+    h2 { font-family:'DM Serif Display',serif; font-size:clamp(1.8rem,3vw,2.5rem); line-height:1.15; letter-spacing:-0.02em; }
+    h3 { font-size:1rem; font-weight:600; }
+    p { color:var(--muted); line-height:1.75; }
+    .divider { border:none; border-top:1px solid var(--border); }
+    .fi { opacity:0; transform:translateY(20px); transition:opacity 0.5s ease,transform 0.5s ease; }
+    .fi.vis { opacity:1; transform:none; }
+    .btn { padding:11px 24px; border-radius:8px; font-size:0.88rem; font-weight:600; text-decoration:none; transition:all 0.2s; cursor:pointer; border:none; display:inline-block; }
+    .btn-primary { background:var(--accent); color:#fff; }
+    .btn-primary:hover { background:#1d4ed8; transform:translateY(-1px); }
+    .btn-ghost { background:transparent; color:var(--text); border:1.5px solid var(--border); }
+    .btn-ghost:hover { border-color:var(--text); }
+
+    /* HERO */
+    #home { min-height:calc(100vh - var(--nav-h)); display:flex; flex-direction:column; justify-content:center; padding-top:40px; padding-bottom:40px; border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
+    .hero-banner { position:absolute; top:0; left:0; right:0; bottom:0; pointer-events:none; }
+    .hero-content { position:relative; z-index:1; }
+    .hero-badge { display:inline-flex; align-items:center; gap:8px; background:var(--accent-light); color:var(--accent); font-size:0.78rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; padding:6px 14px; border-radius:100px; margin-bottom:28px; }
+    .hero-badge .dot { width:7px; height:7px; border-radius:50%; background:var(--accent); animation:pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
+    .hero-title { margin-bottom:22px; }
+    .hero-title em { font-style:italic; color:var(--accent); }
+    .hero-sub { font-size:1.05rem; color:var(--muted); max-width:540px; margin-bottom:32px; }
+    .hero-chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:38px; }
+    .chip { background:var(--tag-bg); color:var(--text); font-size:0.78rem; font-weight:500; padding:5px 13px; border-radius:100px; border:1px solid var(--border); }
+    .hero-cta { display:flex; gap:12px; flex-wrap:wrap; }
+    .hero-socials { display:flex; gap:14px; align-items:center; margin-top:28px; }
+    .hero-socials a img { width:26px; height:26px; opacity:0.55; transition:opacity 0.2s; filter:brightness(0); }
+    .hero-socials a:hover img { opacity:1; }
+
+    /* ABOUT */
+    #about { border-bottom:1px solid var(--border); }
+    .about-grid { display:grid; grid-template-columns:1fr 1.1fr; gap:56px; margin-top:44px; align-items:start; }
+    .card { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:28px; }
+    .role-badge { display:inline-block; background:var(--accent-light); color:var(--accent); font-size:0.75rem; font-weight:600; padding:3px 11px; border-radius:100px; margin-bottom:10px; }
+    .interest-list { list-style:none; display:flex; flex-direction:column; gap:9px; margin-top:14px; }
+    .interest-list li { display:flex; align-items:center; gap:11px; font-size:0.9rem; font-weight:500; }
+    .interest-list li::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--accent); flex-shrink:0; }
+    .xp-list { display:flex; flex-direction:column; }
+    .xp-item { display:flex; gap:14px; padding:16px 0; border-bottom:1px solid var(--border); align-items:flex-start; }
+    .xp-item:last-child { border-bottom:none; }
+    .xp-logo { width:38px; height:38px; border-radius:10px; object-fit:contain; background:var(--surface); border:1px solid var(--border); padding:3px; flex-shrink:0; }
+    .xp-logo-ph { width:38px; height:38px; border-radius:10px; background:var(--accent-light); display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+    .xp-body { flex:1; }
+    .xp-top { display:flex; justify-content:space-between; gap:8px; }
+    .xp-title { font-weight:600; font-size:0.88rem; }
+    .xp-org { color:var(--accent); font-size:0.8rem; font-weight:500; }
+    .xp-desc { font-size:0.81rem; color:var(--muted); margin-top:3px; line-height:1.5; }
+    .xp-date { font-size:0.74rem; color:var(--muted); white-space:nowrap; }
+
+    /* PROJECTS */
+    #projects { border-bottom:1px solid var(--border); }
+    .projects-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:20px; margin-top:40px; }
+    .proj-card { background:var(--surface); border:1px solid var(--border); border-radius:16px; overflow:hidden; transition:transform 0.2s,box-shadow 0.2s; display:flex; flex-direction:column; }
+    .proj-card:hover { transform:translateY(-4px); box-shadow:0 14px 36px rgba(0,0,0,0.08); }
+    .proj-img-wrap { position:relative; cursor:zoom-in; overflow:hidden; background:var(--tag-bg); }
+    .proj-img-wrap::after { content:'⤢'; position:absolute; top:8px; right:10px; font-size:0.9rem; color:rgba(255,255,255,0.9); background:rgba(0,0,0,0.4); padding:2px 7px; border-radius:6px; opacity:0; transition:opacity 0.2s; }
+    .proj-img-wrap:hover::after { opacity:1; }
+    .proj-img { width:100%; height:175px; object-fit:cover; display:block; }
+    .proj-img-contain { width:100%; height:175px; object-fit:contain; display:block; padding:10px; }
+    .proj-img-dark { width:100%; height:175px; object-fit:cover; display:block; background:#1a1a2e; }
+    .proj-img-center { width:100%; height:175px; object-fit:contain; display:block; background:#0d1b4b; padding:20px; }
+    .proj-body { padding:20px 22px; flex:1; display:flex; flex-direction:column; }
+    .proj-cat { font-size:0.69rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin-bottom:5px; }
+    .proj-card h3 { margin-bottom:7px; font-size:0.97rem; }
+    .proj-card p { font-size:0.83rem; flex:1; }
+    .tag-row { display:flex; flex-wrap:wrap; gap:5px; margin-top:13px; align-items:center; }
+    .tag { font-size:0.71rem; font-weight:500; padding:3px 9px; border-radius:100px; background:var(--tag-bg); color:var(--muted); }
+
+    /* LIGHTBOX */
+    .lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88); z-index:999; align-items:center; justify-content:center; cursor:zoom-out; }
+    .lightbox.open { display:flex; }
+    .lightbox img { max-width:92vw; max-height:88vh; border-radius:10px; object-fit:contain; box-shadow:0 24px 80px rgba(0,0,0,0.5); }
+    .lb-close { position:fixed; top:20px; right:26px; color:#fff; font-size:2rem; cursor:pointer; line-height:1; z-index:1000; }
+
+    /* DASHBOARD */
+    #dashboard { border-bottom:1px solid var(--border); }
+    .dash-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:40px; }
+    .dash-card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:20px 22px; }
+    .dash-card.wide { grid-column:span 2; }
+    .dash-card.full { grid-column:span 3; }
+    .dash-metric { font-family:'DM Serif Display',serif; font-size:2.2rem; color:var(--text); line-height:1; margin-top:4px; }
+    .dash-label { font-size:0.77rem; color:var(--muted); font-weight:500; }
+    .dash-delta { font-size:0.77rem; color:var(--accent2); font-weight:600; margin-top:3px; }
+    .mini-bar-wrap { display:flex; flex-direction:column; gap:8px; margin-top:12px; }
+    .mini-bar-row { display:flex; align-items:center; gap:10px; font-size:0.78rem; }
+    .mini-bar-label { width:100px; color:var(--muted); flex-shrink:0; }
+    .mini-bar-track { flex:1; height:6px; background:var(--tag-bg); border-radius:100px; overflow:hidden; }
+    .mini-bar-fill { height:100%; border-radius:100px; background:var(--accent); }
+    .mini-bar-val { width:30px; text-align:right; color:var(--text); font-weight:500; }
+    .sparkline-wrap { margin-top:12px; height:88px; }
+    .dash-note { margin-top:26px; background:var(--accent-light); border:1px solid #bfcfee; border-radius:12px; padding:18px 22px; font-size:0.84rem; color:var(--accent); }
+    .dash-note strong { display:block; margin-bottom:4px; font-weight:600; }
+    .dash-note code { background:rgba(37,99,235,0.12); padding:1px 5px; border-radius:4px; font-size:0.8rem; }
+
+    /* LINKEDIN */
+    #linkedin { border-bottom:1px solid var(--border); }
+    .li-card { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:28px; max-width:620px; margin-top:36px; }
+    .li-header { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+    .li-avatar { width:48px; height:48px; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; color:#fff; font-family:'DM Serif Display',serif; font-size:1.2rem; flex-shrink:0; }
+    .li-name { font-weight:600; font-size:0.92rem; }
+    .li-role { font-size:0.78rem; color:var(--muted); }
+    .li-logo-img { margin-left:auto; width:26px; height:26px; object-fit:contain; }
+    .li-body { font-size:0.88rem; color:var(--text); line-height:1.75; }
+    .li-date { margin-top:14px; font-size:0.76rem; color:var(--muted); }
+    .li-actions { margin-top:18px; display:flex; gap:18px; }
+    .li-action { font-size:0.8rem; color:var(--muted); font-weight:500; cursor:pointer; }
+    .li-action:hover { color:var(--accent); }
+    .li-setup-note { margin-top:22px; border:1px dashed var(--border); border-radius:12px; padding:18px 22px; font-size:0.83rem; color:var(--muted); }
+    .li-setup-note strong { color:var(--text); display:block; margin-bottom:6px; }
+    .li-setup-note ol { padding-left:16px; margin-top:6px; display:flex; flex-direction:column; gap:4px; }
+    .li-setup-note a { color:var(--accent); }
+
+    /* FOOTER */
+    footer { background:var(--text); color:rgba(255,255,255,0.4); padding:32px 48px; }
+    .footer-inner { max-width:1100px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; }
+    .footer-name { font-family:'DM Serif Display',serif; color:#fff; font-size:1rem; }
+    .footer-socials { display:flex; gap:14px; }
+    .footer-socials img { width:20px; height:20px; opacity:0.45; filter:brightness(0) invert(1); transition:opacity 0.2s; }
+    .footer-socials a:hover img { opacity:1; }
+
+    @media(max-width:768px){
+      nav{padding:0 20px;} section{padding:60px 20px;}
+      .about-grid{grid-template-columns:1fr;gap:28px;}
+      .dash-grid{grid-template-columns:1fr 1fr;}
+      .dash-card.wide,.dash-card.full{grid-column:span 2;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#home">Luca Rijneveld</a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+  </ul>
+</nav>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lb-close">×</span>
+  <img id="lb-img" src="" alt="Preview" />
+</div>
+
+<main>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-banner"></div>
+    <div class="hero-content">
+      <div class="hero-badge fi"><span class="dot"></span> Open to chat about AI any time!</div>
+      <h1 class="hero-title fi">Data Science<br>&amp; <em>Artificial Intelligence</em></h1>
+      <p class="hero-sub fi">Hi, I'm <strong>Luca Rijneveld</strong> — BSc graduate &amp; Specialist Technology Adoption &amp; Enablement at PwC Ireland. I turn data and AI into decisions that matter.</p>
+      <div class="hero-chips fi">
+        <span class="chip">AI Governance</span><span class="chip">Agentic AI</span><span class="chip">Explainable AI</span>
+        <span class="chip">Data Storytelling</span><span class="chip">NLP</span><span class="chip">Reinforcement Learning</span>
+      </div>
+      <div class="hero-cta fi">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="https://www.linkedin.com/in/luca-rijneveld/" class="btn btn-ghost">LinkedIn</a>
+      </div>
+      <div class="hero-socials fi">
+        <a href="mailto:lucarijneveld@gmail.com" title="Email"><img src="mail-icon.png" alt="Email" /></a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">About Me</p>
+    <h2 class="fi">Where data meets<br>meaningful decisions</h2>
+    <div class="about-grid">
+      <div>
+        <div class="card fi" style="margin-bottom:16px;">
+          <span class="role-badge">Current Role</span>
+          <h3 style="margin-bottom:6px;">Specialist — Technology Adoption &amp; Enablement</h3>
+          <p style="font-size:0.87rem;">PwC Ireland — helping organisations responsibly adopt AI and emerging technologies, building trust in complex data-driven systems.</p>
+        </div>
+        <div class="card fi" style="margin-bottom:16px;">
+          <h3 style="margin-bottom:2px;">Interests</h3>
+          <ul class="interest-list">
+            <li>AI Governance &amp; Reliability</li>
+            <li>Data Storytelling</li>
+            <li>Agentic AI Systems</li>
+            <li>Explainable AI (XAI)</li>
+          </ul>
+        </div>
+        <div class="card fi">
+          <h3 style="margin-bottom:10px;">Education</h3>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <img src="buas-logo.png" alt="BUas" style="width:36px;height:36px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid var(--border);padding:3px;flex-shrink:0;" />
+            <div>
+              <div style="font-weight:600;font-size:0.88rem;">BSc Applied Data Science &amp; AI</div>
+              <div style="font-size:0.79rem;color:var(--muted);">Breda University of Applied Sciences</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fi">
+        <p style="font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px;">Experience</p>
+        <div class="xp-list">
+          <div class="xp-item">
+            <img src="PwC.png" alt="PwC" class="xp-logo" />
+            <div class="xp-body">
+              <div class="xp-top"><div><div class="xp-title">Specialist Technology Adoption &amp; Enablement</div><div class="xp-org">PwC Ireland</div></div><span class="xp-date">2024 –</span></div>
+            </div>
+          </div>
+          <div class="xp-item">
+            <img src="breda-guardians-logo.png" alt="Breda Guardians" class="xp-logo" />
+            <div class="xp-body">
+              <div class="xp-top"><div><div class="xp-title">Research Manager</div><div class="xp-org">Breda Guardians × BUas</div></div><span class="xp-date">2023</span></div>
+              <p class="xp-desc">Internship at Breda's local ESports team in collaboration with Breda University — data-driven research on team performance improvement.</p>
+            </div>
+          </div>
+          <div class="xp-item">
+            <img src="efteling-logo.png" alt="Efteling" class="xp-logo" />
+            <div class="xp-body">
+              <div class="xp-top"><div><div class="xp-title">Project Assistant — Guest Experience Analytics</div><div class="xp-org">Efteling</div></div><span class="xp-date">2022</span></div>
+              <p class="xp-desc">Built dashboards to analyse and improve guest experience data across the park.</p>
+            </div>
+          </div>
+          <div class="xp-item">
+            <img src="esa-logo.png" alt="ESA" class="xp-logo" />
+            <div class="xp-body">
+              <div class="xp-top"><div><div class="xp-title">Internship — Knowledge Management</div><div class="xp-org">European Space Agency (ESA)</div></div><span class="xp-date">2022</span></div>
+              <p class="xp-desc">NLP-driven knowledge extraction from unstructured data. Designed and implemented databases for the Knowledge Management team.</p>
+            </div>
+          </div>
+          <div class="xp-item">
+            <img src="esa-logo.png" alt="YoungESA" class="xp-logo" />
+            <div class="xp-body">
+              <div class="xp-top"><div><div class="xp-title">YPSAT2 — On-Board Data Handling (OBDH)</div><div class="xp-org">YoungESA Initiative</div></div><span class="xp-date">2022</span></div>
+              <p class="xp-desc">Student satellite project — OBDH subsystem. Cross-team coordination toward the Preliminary Design Review (PDR).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label">Projects</p>
+    <h2 class="fi">Work I'm proud of</h2>
+    <p class="fi" style="margin-top:8px;max-width:500px;">Spanning robotics, civic analytics, explainable AI, and data storytelling. Click any image to expand.</p>
+
+    <div class="projects-grid">
+
+      <div class="proj-card fi">
+        <div class="proj-img-wrap" onclick="openLightbox('aichoach.png')">
+          <img class="proj-img-dark" src="aichoach.png" alt="Video Game Coach simulation" />
+        </div>
+        <div class="proj-body">
+          <div class="proj-cat">Graduation Project</div>
+          <h3>Video Game Coach</h3>
+          <p>Graduation project — End-to-end pipeline from game data ingestion to LLM-powered gameplay analysis. Personalised coaching insights via NLP — using the Breda Guardians as real-world case.</p>
+          <div class="tag-row">
+            <img src="breda-guardians-logo.png" alt="Breda Guardians" style="height:18px;object-fit:contain;opacity:0.8;" />
+            <span class="tag">NLP</span><span class="tag">LLMs</span><span class="tag">Data Pipeline</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card fi">
+        <div class="proj-img-wrap" onclick="openLightbox('Picture1.gif')">
+          <img class="proj-img-dark" src="Picture1.gif" alt="Robotics NLP simulation" />
+        </div>
+        <div class="proj-body">
+          <div class="proj-cat">Research Project</div>
+          <h3>Robotics &amp; Environment Understanding</h3>
+          <p>Enabling robots to understand and navigate their environment using Natural Language Processing and Reinforcement Learning.</p>
+          <div class="tag-row"><span class="tag">Reinforcement Learning</span><span class="tag">NLP</span><span class="tag">Simulation</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card fi">
+        <div class="proj-img-wrap" onclick="openLightbox('bredamunicpality.png')">
+          <img class="proj-img" src="bredamunicpality.png" alt="Municipality Breda QoL dashboard" />
+        </div>
+        <div class="proj-body">
+          <div class="proj-cat">Civic Analytics</div>
+          <h3>Municipality Breda — QoL Dashboard</h3>
+          <p>Interactive GIS-powered dashboard analysing Quality of Life improvements via Klimaat Effect Atlas indicators, enabling evidence-based policy decisions.</p>
+          <div class="tag-row">
+            <img src="breda-logo.png" alt="Gemeente Breda" style="height:15px;object-fit:contain;opacity:0.75;" />
+            <span class="tag">GIS</span><span class="tag">Policy Analytics</span><span class="tag">Data Viz</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card fi">
+        <div class="proj-img-wrap" onclick="openLightbox('featureimportance.png')">
+          <img class="proj-img-contain" src="featureimportance.png" alt="Feature importance chart" />
+        </div>
+        <div class="proj-body">
+          <div class="proj-cat">Machine Learning</div>
+          <h3>Feature Importance Modelling</h3>
+          <p>Identified the key urban indicators (green space density, population) driving QoL in Breda using tree-based feature importance analysis.</p>
+          <div class="tag-row"><span class="tag">Scikit-learn</span><span class="tag">Random Forest</span><span class="tag">Feature Engineering</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card fi">
+        <div class="proj-img-wrap" onclick="openLightbox('xai.png')">
+          <img class="proj-img" src="xai.png" alt="Grad-CAM XAI visualisation" />
+        </div>
+        <div class="proj-body">
+          <div class="proj-cat">Explainable AI</div>
+          <h3>Grad-CAM Visualisation</h3>
+          <p>Applied Gradient-weighted Class Activation Mapping (Grad-CAM) to visualise CNN decision regions — making model behaviour interpretable and trustworthy.</p>
+          <div class="tag-row"><span class="tag">XAI</span><span class="tag">CNN</span><span class="tag">Grad-CAM</span><span class="tag">PyTorch</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card fi">
+        <div class="proj-img-wrap" onclick="openLightbox('PlotMean_Subdomain.png')">
+          <img class="proj-img-contain" src="PlotMean_Subdomain.png" alt="AI acceptance research plots" />
+        </div>
+        <div class="proj-body">
+          <div class="proj-cat">Academic Research</div>
+          <h3>AI Acceptance — Creative Media Study</h3>
+          <p>Research paper exploring AI acceptance differences across disciplines (Programming, Design &amp; Production, Visual Arts) in the Bachelor Creative Media &amp; Game Technologies.</p>
+          <div class="tag-row"><span class="tag">R</span><span class="tag">Statistical Analysis</span><span class="tag">Survey Design</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card fi">
+        <div class="proj-img-wrap" onclick="openLightbox('SDG.png')">
+          <img class="proj-img" src="SDG.png" alt="SDG scientific poster" />
+        </div>
+        <div class="proj-body">
+          <div class="proj-cat">Data Storytelling</div>
+          <h3>SDG Data Poster — Discrimination Analysis</h3>
+          <p>Scientific poster exploring gender-based workplace discrimination using UN SDG data from Sweden and Ireland — a data-driven narrative on gender equality indicators.</p>
+          <div class="tag-row"><span class="tag">ggplot2</span><span class="tag">R</span><span class="tag">SDGs</span><span class="tag">Poster Design</span></div>
+        </div>
+      </div>
+
+      <div class="proj-card fi">
+        <div class="proj-img-wrap" onclick="openLightbox('esa-logo.png')" style="background:#0d1b4b;">
+          <img class="proj-img-center" src="esa-logo.png" alt="ESA logo" />
+        </div>
+        <div class="proj-body">
+          <div class="proj-cat">Internship + Initiative</div>
+          <h3>ESA — Knowledge Extraction &amp; YPSAT2</h3>
+          <p>NLP knowledge extraction at ESA's Knowledge Management team. Also contributed to the YPSAT2 student satellite as part of the OBDH subsystem — from design through PDR.</p>
+          <div class="tag-row"><span class="tag">NLP</span><span class="tag">Knowledge Graphs</span><span class="tag">Database Design</span><span class="tag">PDR</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-name">Luca Rijneveld</span>
+    <span style="font-size:0.83rem;">BSc Applied Data Science &amp; AI · PwC Ireland</span>
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/in/luca-rijneveld/" target="_blank"><img src="linkedin-icon.png" alt="LinkedIn" /></a>
+      <a href="mailto:lucarijneveld@gmail.com"><img src="mail-icon.png" alt="Email" /></a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+  // ── PASTE YOUR APPS SCRIPT URL HERE ──
+  const ANALYTICS_URL = "https://script.google.com/macros/s/AKfycbxpy2x8DW9yTCgcoZqURzZAT-yQLOzRQpe5No7k7L3ocb6GtW3PA3kMdMkd04R34Tsa/exec";
+
+  // ── Fade-in (unchanged) ──
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+
+  // ── Lightbox (unchanged) ──
+  function openLightbox(src){ document.getElementById('lb-img').src=src; document.getElementById('lightbox').classList.add('open'); }
+  function closeLightbox(){ document.getElementById('lightbox').classList.remove('open'); }
+  document.addEventListener('keydown', e => { if(e.key==='Escape') closeLightbox(); });
+
+  // ── Section tracker ──
+  let currentSection = "Home";
+  const sectionMap = { home:"Home", about:"About", projects:"Projects", dashboard:"Dashboard", linkedin:"LinkedIn" };
+  const sectionObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        const label = sectionMap[e.target.id];
+        if(label && label !== currentSection){ currentSection = label; logVisit(label); }
+      }
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
+
+  // ── Log visit to Google Sheet ──
+  async function logVisit(section) {
+    if(!ANALYTICS_URL || ANALYTICS_URL === "YOUR_SCRIPT_URL_HERE") return;
+    try {
+      let country = "Unknown";
+      try {
+        const geo = await fetch("https://ip-api.com/json/?fields=country");
+        if(geo.ok){ const g = await geo.json(); country = g.country || "Unknown"; }
+      } catch(_) {}
+      const params = new URLSearchParams({
+        action: "log", section, country,
+        ref: document.referrer ? new URL(document.referrer).hostname : "direct",
+        ua: navigator.userAgent.substring(0, 80)
+      });
+      navigator.sendBeacon(ANALYTICS_URL + "?" + params.toString());
+    } catch(err) { console.warn("Analytics log failed:", err); }
+  }
+
+  // ── Load live stats from Google Sheet ──
+  let sparkChart = null;
+  async function loadStats() {
+    if(!ANALYTICS_URL || ANALYTICS_URL === "YOUR_SCRIPT_URL_HERE"){
+      loadMockStats(); return; // falls back to mock if URL not set yet
+    }
+    try {
+      const res = await fetch(ANALYTICS_URL + "?action=stats");
+      if(!res.ok) throw new Error("HTTP " + res.status);
+      const d = await res.json();
+      if(d.error) throw new Error(d.error);
+
+      document.getElementById('stat-visitors').textContent = d.visitors.toLocaleString();
+      document.getElementById('stat-views').textContent    = d.views.toLocaleString();
+      document.getElementById('stat-session').textContent  = d.avgSession;
+      document.getElementById('delta-visitors').textContent = d.visitorsDelta;
+      document.getElementById('delta-views').textContent    = d.viewsDelta;
+
+      const labels = d.sparkline.map(s => new Date(s.date + "T12:00:00").toLocaleDateString("en-GB",{weekday:"short"}));
+      const values = d.sparkline.map(s => s.visitors);
+      if(sparkChart) sparkChart.destroy();
+      const ctx = document.getElementById('sparkline').getContext('2d');
+      sparkChart = new Chart(ctx,{type:'line',data:{labels,datasets:[{data:values,borderColor:'#2563EB',backgroundColor:'rgba(37,99,235,0.07)',borderWidth:2,pointRadius:4,pointBackgroundColor:'#2563EB',fill:true,tension:0.4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:11},color:'#7A7870'}},y:{grid:{color:'#E4E2DA'},ticks:{font:{size:11},color:'#7A7870'},min:0}}}});
+
+      const cWrap = document.getElementById('countries'); cWrap.innerHTML='';
+      const maxC = Math.max(...d.topCountries.map(c=>c.count),1);
+      d.topCountries.forEach(c => { cWrap.innerHTML+=`<div class="mini-bar-row"><span class="mini-bar-label">${c.name}</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:${Math.round(c.count/maxC*100)}%"></div></div><span class="mini-bar-val">${c.count}</span></div>`; });
+
+      const sWrap = document.getElementById('sections'); sWrap.innerHTML='';
+      const maxS = Math.max(...d.topSections.map(s=>s.count),1);
+      d.topSections.forEach(s => { sWrap.innerHTML+=`<div class="mini-bar-row" style="min-width:190px;"><span class="mini-bar-label">${s.name}</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:${Math.round(s.count/maxS*100)}%"></div></div><span class="mini-bar-val">${s.count}</span></div>`; });
+
+    } catch(err) {
+      console.warn("Live stats failed, falling back to mock:", err);
+      loadMockStats();
+    }
+  }
+
+  // ── Mock stats (fallback until URL is set) ──
+  function loadMockStats(){
+    document.getElementById('stat-visitors').textContent='1,284';
+    document.getElementById('delta-visitors').textContent='↑ 12% vs last week';
+    document.getElementById('stat-views').textContent='3,761';
+    document.getElementById('delta-views').textContent='↑ 8% vs last week';
+    document.getElementById('stat-session').textContent='2m 34s';
+    const ctx=document.getElementById('sparkline').getContext('2d');
+    if(sparkChart) sparkChart.destroy();
+    sparkChart=new Chart(ctx,{type:'line',data:{labels:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],datasets:[{data:[142,198,175,224,263,189,93],borderColor:'#2563EB',backgroundColor:'rgba(37,99,235,0.07)',borderWidth:2,pointRadius:3,pointBackgroundColor:'#2563EB',fill:true,tension:0.4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:11},color:'#7A7870'}},y:{grid:{color:'#E4E2DA'},ticks:{font:{size:11},color:'#7A7870'}}}}});
+    [['Ireland',82],['Netherlands',61],['Germany',38],['UK',29],['USA',22]].forEach(([l,p])=>{
+      document.getElementById('countries').innerHTML+=`<div class="mini-bar-row"><span class="mini-bar-label">${l}</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:${p}%"></div></div><span class="mini-bar-val">${p}%</span></div>`;
+    });
+    [['Home',100],['Projects',91],['About',74],['Dashboard',48],['LinkedIn',35]].forEach(([l,p])=>{
+      document.getElementById('sections').innerHTML+=`<div class="mini-bar-row" style="min-width:190px;"><span class="mini-bar-label">${l}</span><div class="mini-bar-track"><div class="mini-bar-fill" style="width:${p}%"></div></div><span class="mini-bar-val">${p}%</span></div>`;
+    });
+  }
+
+  // ── Mock LinkedIn (unchanged) ──
+  function loadMockLinkedIn(){
+    document.getElementById('li-post-body').innerHTML=`Excited to be part of the conversation around <strong>AI Governance</strong> at PwC Ireland 🚀<br><br>One thing I keep coming back to: responsible AI adoption isn't about slowing things down — it's about building trust so you can move faster, with confidence.<br><br>From data science to technology enablement, the common thread is always the same: the best AI systems are the ones people actually understand and trust.<br><br>If you're working on AI enablement, explainability, or governance frameworks, I'd love to connect! 👇<br><br>#AIGovernance #ExplainableAI #DataScience #PwC #AgenticAI`;
+    document.getElementById('li-post-date').textContent='Posted April 2025';
+    document.getElementById('li-likes').textContent='👍 47';
+  }
+
+  // ── Boot ──
+  loadStats();
+  loadMockLinkedIn();
+  window.addEventListener('load', () => logVisit("Home"));
+  setInterval(loadStats, 5 * 60 * 1000);
+</script>
+</body>
+</html>
